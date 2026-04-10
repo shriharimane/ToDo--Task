@@ -80,3 +80,16 @@ button:disabled {
 .error {
   color: #b42525;
 }
+
+.stack-sm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.stack-sm input,
+.stack-sm textarea,
+.stack-sm select,
+.stack-sm button {
+  margin-bottom: 0;
+}
