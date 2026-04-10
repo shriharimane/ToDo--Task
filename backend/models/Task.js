@@ -1,44 +1,43 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema(
   {
     title: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      minlength: 3,
     },
     description: {
       type: String,
-      default: '',
-      trim: true
+      required: true,
     },
     status: {
       type: String,
       enum: ['Todo', 'In Progress', 'Done'],
-      default: 'Todo'
+      default: 'Todo',
     },
     dueDate: {
       type: Date,
-      default: null
+      required: true,
     },
-    creator: {
+    taskType: {
+      type: String,
+      enum: ['Personal', 'Assigned'],
+      default: 'Personal',
+    },
+    createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      required: true
+      required: true,
     },
-    assignee: {
+    assignedTo: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      default: null
-    }
+      default: null,
+    },
   },
   { timestamps: true }
 );
 
-taskSchema.virtual('taskType').get(function taskTypeGetter() {
-  return this.assignee ? 'assigned' : 'personal';
-});
-
-taskSchema.set('toJSON', { virtuals: true });
-
-export const Task = mongoose.model('Task', taskSchema);
+module.exports = mongoose.model('Task', taskSchema);
