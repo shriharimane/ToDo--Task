@@ -308,61 +308,6 @@ task-management-system/
 - ✅ CORS configuration
 - ✅ Environment variables for secrets
 
-## 🐛 Troubleshooting
-
-### MongoDB Connection Error
-```
-Error: connect ECONNREFUSED 127.0.0.1:27017
-```
-**Solution**: Ensure MongoDB is running
-```bash
-# On Windows
-mongod
-
-# On Mac/Linux
-brew services start mongodb-community
-```
-
-### Port Already in Use
-```
-Error: listen EADDRINUSE: address already in use :::5000
-```
-**Solution**: Change PORT in .env or kill the process using the port
-
-### Module Not Found
-```
-Cannot find module 'express'
-```
-**Solution**: Run `npm install` in the respective directory (server/client)
-
-### React App Won't Load
-- Clear browser cache (Ctrl+Shift+Delete)
-- Restart the development server
-- Check console for errors (F12)
-
-## 📝 API Request Examples
-
-### Register User
-```bash
-curl -X POST http://localhost:5000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "username": "john",
-    "email": "john@example.com",
-    "password": "password123",
-    "confirmPassword": "password123"
-  }'
-```
-
-### Login
-```bash
-curl -X POST http://localhost:5000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "john@example.com",
-    "password": "password123"
-  }'
-```
 
 ### Create Task
 ```bash
@@ -377,22 +322,8 @@ curl -X POST http://localhost:5000/api/tasks \
   }'
 ```
 
-## 🚀 Deployment
 
-### Deploy Backend (Heroku, Railway, Render)
-1. Ensure all environment variables are set
-2. Create a `Procfile` with: `web: node server.js`
-3. Set `NODE_ENV=production`
-4. Push to hosting platform
 
-### Deploy Frontend (Vercel, Netlify)
-1. Build the React app: `npm run build`
-2. Deploy the `build` folder
-3. Update `REACT_APP_API_URL` to your deployed backend URL
-
-## 📧 Support & Contact
-
-For issues or questions, please create an issue in the repository or contact the development team.
 
 ## 📄 License
 
