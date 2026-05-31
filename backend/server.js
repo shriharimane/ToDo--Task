@@ -13,7 +13,7 @@ const app = express();
 // ✅ FIXED CORS
 app.use(cors({
   origin: "https://to-do-task-taupe.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   credentials: true
 }));
 
