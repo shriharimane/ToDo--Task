@@ -114,16 +114,17 @@ const TaskModal = ({ task, users, onSave, onClose }) => {
     if (!validateForm()) return;
 
     const payload = {
-      title: formData.title,
-      description: formData.description,
-      dueDate: formData.dueDate,
-      status: formData.status,
-    };
+  title: formData.title,
+  description: formData.description,
+  dueDate: formData.dueDate,
+};
+
+if (formData.assignedTo) {
+  payload.assignedTo = formData.assignedTo;
+}
 
     // Only include assignedTo if it has changed or is new task
-    if (formData.assignedTo) {
-      payload.assignedTo = formData.assignedTo;
-    }
+    
 
     setLoading(true);
     try {
